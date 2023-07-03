@@ -1,14 +1,16 @@
   const form = document.querySelector('form');
 
   form.addEventListener('submit', (elemen) => {
-
     elemen.preventDefault();
+    const formulir = new dataForm(form);
+    DataInPost(formulir)
+    Reset();
+  })
 
-    const formulir = new FormData(form);
-    
+  function DataInPost(formulir){
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
+    myHeaders.append("Content-Type","application/json");
+    
     var object = {};
     formulir.forEach(function(value, key){
         object;
@@ -21,16 +23,12 @@
       body: JSON.stringify(object),
       redirect: 'follow',
     };
-
-    console.log(requestOptions);
   
     fetch("https://eoixeju2haq0aoe.m.pipedream.net", requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => GetRes(result))
     .catch(error => console.log('error', error));
-
-    document.getElementById('form').reset();
-  })
+  }
 
 function GetRes(result){
   alert(result)
