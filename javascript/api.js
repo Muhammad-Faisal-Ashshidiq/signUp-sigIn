@@ -32,5 +32,13 @@
     document.getElementById('form').reset();
   })
 
+function GetRes(result){
+  alert(result)
+}
+
+function Reset(result){
+  document.getElementById('form').reset();
+}
+
   //upload
   
